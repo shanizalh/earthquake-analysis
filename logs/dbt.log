@@ -1,0 +1,29 @@
+[0m09:18:58.194166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eff97c83040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eff9604ae60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eff9604b760>]}
+
+
+============================== 09:18:58.196259 | abccaaf0-ef69-47f4-8659-a1ec5d91a5a4 ==============================
+[0m09:18:58.196259 [info ] [MainThread]: Running with dbt=1.8.2
+[0m09:18:58.196791 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': '/home/shanizal/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt init', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m09:19:32.249224 [debug] [MainThread]: Starter project path: /home/shanizal/project/eq-analysis/dbt-env/lib/python3.10/site-packages/dbt/include/starter_project
+[0m09:19:32.264088 [info ] [MainThread]: 
+Your new dbt project "bi_postgres_transform" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:19:32.264670 [info ] [MainThread]: Setting up your profile.
+[0m09:22:11.965991 [info ] [MainThread]: Profile bi_postgres_transform written to /home/shanizal/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m09:22:11.967872 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 193.82779, "process_user_time": 1.09594, "process_kernel_time": 0.170926, "process_mem_max_rss": "94852", "process_in_blocks": "80", "process_out_blocks": "88"}
+[0m09:22:11.968655 [debug] [MainThread]: Command `dbt init` succeeded at 09:22:11.968517 after 193.83 seconds
+[0m09:22:11.969132 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eff97c83040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eff95fc7280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eff9604af20>]}
+[0m09:22:11.969503 [debug] [MainThread]: Flushing usage events
