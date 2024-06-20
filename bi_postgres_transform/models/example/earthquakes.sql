@@ -1,0 +1,1 @@
+SELECT * FROM {{ source('bi_db', 'earthquakes') }}

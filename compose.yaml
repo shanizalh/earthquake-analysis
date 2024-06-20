@@ -13,6 +13,11 @@ services:
       POSTGRES_PASSWORD: secret
     volumes:
       - ./source_db_init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:  # Added health check
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   bi_postgres:
     image: postgres:15
@@ -24,6 +29,11 @@ services:
       POSTGRES_DB: bi_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
+    healthcheck:  # Added health check
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   elt_script:
     build:
@@ -32,9 +42,33 @@ services:
     command: [ "python", "elt_script.py" ]
     networks:
       - eq_network
+    depends_on:  # Updated depends_on with health check conditions
+      source_postgres:
+        condition: service_healthy
+      bi_postgres:
+        condition: service_healthy
+
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:latest
+    command:
+      [
+        "run",
+        "--profiles-dir",
+        "/root",
+        "--project-dir",
+        "/dbt",
+        "--full-refresh"
+      ]
+    networks:
+      - eq_network
+    volumes:
+      - ./bi_postgres_transform:/dbt
+      - ~/.dbt:/root
     depends_on:
-      - source_postgres
-      - bi_postgres
+      - elt_script
+    environment:
+      DBT_PROFILE: bi_postgres_transform
+      DBT_TARGET: dev
 
 networks:
   eq_network:

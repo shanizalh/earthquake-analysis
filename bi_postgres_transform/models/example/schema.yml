@@ -2,20 +2,75 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+  - name: earthquakes
+    description: "This table contains details about earthquakes that occurred."
     columns:
       - name: id
         description: "The primary key for this table"
         data_tests:
           - unique
           - not_null
-
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
+      - name: place
+        description: "Location of the earthquake"
         data_tests:
-          - unique
           - not_null
+      - name: mag
+        description: "Magnitude of the earthquake"
+        data_tests:
+          - not_null
+      - name: time
+        description: "Time of the earthquake (timestamp in milliseconds)"
+        data_tests:
+          - not_null
+      - name: updated
+        description: "Time of the last update (timestamp in milliseconds)"
+        data_tests:
+          - not_null
+      - name: tz
+        description: "Timezone offset from UTC in minutes"
+      - name: url
+        description: "URL to more details about the earthquake"
+      - name: detail
+        description: "Detail JSON string about the earthquake"
+      - name: felt
+        description: "Number of reports indicating the earthquake was felt"
+      - name: cdi
+        description: "Community Determined Intensity"
+      - name: mmi
+        description: "Maximum Modified Mercalli Intensity"
+      - name: alert
+        description: "Alert level for the earthquake"
+      - name: status
+        description: "Status of the earthquake data"
+      - name: tsunami
+        description: "Indicates if the earthquake generated a tsunami (1 for yes, 0 for no)"
+      - name: sig
+        description: "Significance of the earthquake"
+      - name: net
+        description: "Network identifier"
+      - name: code
+        description: "Code for the earthquake"
+      - name: ids
+        description: "List of event IDs associated with the earthquake"
+      - name: sources
+        description: "List of sources for the earthquake data"
+      - name: types
+        description: "List of types associated with the earthquake"
+      - name: nst
+        description: "Number of seismic stations used to determine the earthquake location"
+      - name: dmin
+        description: "Minimum distance to the earthquake from a seismic station"
+      - name: rms
+        description: "Root mean square of the residuals"
+      - name: gap
+        description: "Gap between the nearest seismic station and the earthquake"
+      - name: magType
+        description: "Type of magnitude reported"
+      - name: type
+        description: "Type of seismic event"
+      - name: title
+        description: "Title of the earthquake event"
+      - name: latitude
+        description: "Geographical latitude location of the event"
+      - name: longitude
+        description: "Geographical longitude location of the event"

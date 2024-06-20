@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: bi_db
+    description: "Raw data from the BI PostgreSQL database."
+    database: bi_db
+    schema: public
+    tables:
+      - name: earthquakes
+        description: "List of earthquakes."

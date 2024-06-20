@@ -68,9 +68,12 @@ cur = conn.cursor()
 # Insert data into PostgreSQL
 for feature in data['features']:
     properties = feature['properties']
+    geometry = feature['geometry']
+    latitude = geometry['coordinates'][1]
+    longitude = geometry['coordinates'][0]
     insert_query = """
-    INSERT INTO earthquakes (place, mag, time, updated, tz, url, detail, felt, cdi, mmi, alert, status, tsunami, sig, net, code, ids, sources, types, nst, dmin, rms, gap, magType, type, title)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO earthquakes (place, mag, time, updated, tz, url, detail, felt, cdi, mmi, alert, status, tsunami, sig, net, code, ids, sources, types, nst, dmin, rms, gap, magType, type, title, latitude, longitude)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     values = (
         properties.get('place'),
@@ -98,7 +101,9 @@ for feature in data['features']:
         properties.get('gap'),
         properties.get('magType'),
         properties.get('type'),
-        properties.get('title')
+        properties.get('title'),
+        latitude,
+        longitude
     )
     
     cur.execute(insert_query, values)
