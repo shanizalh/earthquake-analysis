@@ -55,7 +55,7 @@ t2 = DockerOperator(
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
     mounts=[
-        Mount(source='/home/shanizal/project/eq-analysis/bi_postgres_transform',
+        Mount(source='/home/shanizal/project/earthquake-analysis/bi_postgres_transform',
               target='/dbt', type='bind'),
         Mount(source='/home/shanizal/.dbt', target='/root', type='bind'),
     ],
